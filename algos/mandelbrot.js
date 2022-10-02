@@ -1,13 +1,13 @@
 const math = require('mathjs');
-//image size
-const x = 1200;
-const y = 800;
+// //image size
+// const x = 1200;
+// const y = 800;
 
-//location: change these to move the image/zoom in
-const xMin = -6;
-const xMax = 6;
-const yMin = -4;
-const yMax = yMin + ((xMax - xMin) * y) / x; //uses formula to properly size image
+// //location: change these to move the image/zoom in
+// const xMin = -6;
+// const xMax = 6;
+// const yMin = -4;
+// const yMax = yMin + ((xMax - xMin) * y) / x; //uses formula to properly size image
 
 //spacing
 function stepArr(min, max, arr) {
@@ -16,13 +16,10 @@ function stepArr(min, max, arr) {
     }
     return arr;
 }
-const xSpace = stepArr(xMin, xMax, Array(x));
-const ySpace = stepArr(yMin, yMax, Array(y));
 
 //setup points
-const points = Array(x);
-for (let i = 0; i < points.length; i++) {
-    points[i] = Array(y);
+function heatmapGenerator(x, y, heat) {
+    return { x, y, heat };
 }
 
 //mandelbrot calculation constants: if n reaches iterations before z goes over limit it is in the set
@@ -45,11 +42,26 @@ function inMandSet(x, y) {
     return 0; //return 0 if number is in set
 }
 
-//get value for each point
-for (let i = 0; i < points.length; i++) {
-    for (let j = 0; j < points[i].length; j++) {
-        points[i][j] = inMandSet(xSpace[i], ySpace[j]);
-    }
-}
-
 //plot the heat map below
+export default function generateData(width, height, xMin, xMax, yMin) {
+    const yMax = yMin + ((xMax - xMin) * height) / width; //uses formula to properly size image
+    const data = [];
+
+    const xSpace = stepArr(xMin, xMax, Array(width));
+    const ySpace = stepArr(yMin, yMax, Array(height));
+
+    //get value for each point
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data[i].length; j++) {
+            data.push(
+                heatmapGenerator(
+                    xSpace[i],
+                    ySpace[j],
+                    inMandSet(xSpace[i], ySpace[j])
+                )
+            );
+        }
+    }
+
+    return data;
+}
