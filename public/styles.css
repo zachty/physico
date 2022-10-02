@@ -1,0 +1,87 @@
+* {
+  margin: 0px;
+}
+body {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a {
+  text-decoration: none;
+}
+img {
+  width: 300px;
+  display: block;
+}
+.main {
+  display: flex;
+  justify-content: space-between;
+}
+.column {
+  width: 33%;
+  padding: 5px;
+}
+header {
+  text-align: center;
+  background-color: #203e4a;
+  margin-bottom: 5px;
+  height: 100px;
+}
+header nav {
+  height: 100%;
+  margin-left: 5vw;
+  display: flex;
+  align-items: center;
+}
+header a {
+  font-size: 1.5em;
+  color: white;
+  margin: 34px 15px;
+}
+header a:hover {
+  color: #686868;
+  transition-duration: 1s;
+}
+.content {
+  width: 66%;
+}
+.content .delete-btn {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  box-shadow: 0px 2px 2px grey;
+}
+.content .delete-btn:hover {
+  background-color: #ba0000;
+}
+.content .delete-btn:active {
+  box-shadow: 0 0 0 0;
+  transform: translateY(1px);
+}
+.content > div {
+  margin-bottom: 20px;
+  border: 3px solid black;
+  background-color: antiquewhite;
+}
+.content .single {
+  display: flex;
+  justify-content: space-between;
+  margin: 2px;
+  padding: 1px;
+}
+.content a {
+  color: black;
+}
+ul {
+  list-style-type: none;
+}
+ul button {
+  margin-left: 10px;
+  background-color: #fa7070;
+  transition-duration: 1s;
+}
+ul button:hover {
+  background-color: darkred;
+  color: white;
+}
