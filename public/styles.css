@@ -26,8 +26,9 @@ header {
   height: 100px;
 }
 header img {
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
+  margin-left: 5px;
 }
 header nav {
   height: 100%;
@@ -96,8 +97,20 @@ ul button:hover {
   width: 30vw;
   margin-left: 20px;
 }
-.columns canvas {
+.columns .mouseover-mandel {
+  height: 400px;
+  width: 400px;
   border: 2px black solid;
+}
+.columns .mouseover-mandel * {
+  height: 400px;
+  width: 400px;
+  box-sizing: content-box;
+}
+.columns .mouse-location {
+  background-color: aqua;
+  height: 20px;
+  padding: 5px 0px;
 }
 form {
   margin: 5px;

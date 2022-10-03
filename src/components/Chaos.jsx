@@ -7,9 +7,21 @@ const WIDTH = 1200;
 
 export default function Chaos() {
     const [yMax, setYMax] = useState(yMaxForm(HEIGHT, WIDTH, -2, 1, -1));
+    const [start, setStart] = useState(false);
+    const [real, setReal] = useState(0);
+    const [imaginary, setImaginary] = useState(0);
 
-    function handleMouseOver(event) {
-        console.dir(event.target);
+    function handleMouse(event) {
+        const canvas = document.getElementById('mouseover-mandel');
+        if (!canvas.getContext) return;
+
+        const [real, imaginary] = mandIterations(
+            event.clientX,
+            event.clientY,
+            canvas
+        );
+        setReal(real);
+        setImaginary(imaginary);
     }
 
     function generateMand(event) {
@@ -20,18 +32,16 @@ export default function Chaos() {
         const ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, WIDTH, HEIGHT);
         const [
-            { value: color },
+            { value: color1 },
+            { value: color2 },
             { value: xMin },
             { value: xMax },
             { value: yMin },
         ] = event.target;
-        //TODO: get color as rgb and allow user to change heatmap by sending it to generator
-        // console.dir(event.target.color);
-        // console.log(color);
+        //TODO: allow user to save heatmap
         setYMax(yMaxForm(HEIGHT, WIDTH, xMin, xMax, yMin));
-        dataGenerator(HEIGHT, WIDTH, xMin, xMax, yMin, ctx, color);
+        dataGenerator(HEIGHT, WIDTH, xMin, xMax, yMin, ctx, color1, color2);
         console.log('Fininshed in: ', Date.now() - start);
-        //TODO: generate mandelbrot set
     }
 
     return (
@@ -41,12 +51,24 @@ export default function Chaos() {
                 <hr />
             </div>
             <div className="columns">
-                <canvas
-                    id="mouseover-mandel"
-                    height={400}
-                    width={400}
-                    onMouseOver={handleMouseOver}
-                ></canvas>
+                <div>
+                    <div className="mouseover-mandel">
+                        {start ? (
+                            <canvas
+                                id="mouseover-mandel"
+                                height={400}
+                                width={400}
+                                onMouseMove={handleMouse}
+                            ></canvas>
+                        ) : (
+                            <div onClick={() => setStart(true)}>Play</div>
+                        )}
+                    </div>
+                    <div className="mouse-location">
+                        Real axis: {real.toFixed(3)}, Imaginary axis:{' '}
+                        {imaginary.toFixed(3)}i
+                    </div>
+                </div>
                 <div>
                     <p>
                         Write a description of of how the left canvas relates to
@@ -75,7 +97,7 @@ export default function Chaos() {
                     generate interesting images (possibly offer random
                     selections of interesting spots).
                     <strong>
-                        The graphic can tak up to 30 seconds to load, be
+                        The graphic can take up to 30 seconds to load, be
                         patient!
                     </strong>
                 </p>
@@ -88,7 +110,8 @@ export default function Chaos() {
             </div>
             <form onSubmit={generateMand}>
                 <label htmlFor="color">Heatmap Color: </label>
-                <input type="color" name="color" />
+                <input type="color" name="color1" />
+                <input type="color" name="color2" defaultValue={'#ffffff'} />
                 <label htmlFor="xMin">x-min: </label>
                 <input
                     type="number"
