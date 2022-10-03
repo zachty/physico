@@ -19,21 +19,18 @@ img {
   flex-direction: column;
   align-items: center;
 }
-.mandel {
-  border: 3px black solid;
-  height: 800px;
-  width: 1200px;
-  margin: 10px;
-}
 header {
   text-align: center;
   background-color: #203e4a;
   margin-bottom: 5px;
   height: 100px;
 }
+header img {
+  height: 100px;
+  width: 100px;
+}
 header nav {
   height: 100%;
-  margin-left: 5vw;
   display: flex;
   align-items: center;
 }
@@ -87,4 +84,27 @@ ul button {
 ul button:hover {
   background-color: darkred;
   color: white;
+}
+#mandel {
+  margin: 10px;
+}
+.columns {
+  margin: 15px;
+  display: flex;
+}
+.columns div > p {
+  width: 30vw;
+  margin-left: 20px;
+}
+.columns canvas {
+  border: 2px black solid;
+}
+form {
+  margin: 5px;
+}
+form * {
+  margin: 0px 2px;
+}
+form label {
+  margin-left: 5px;
 }
