@@ -82,8 +82,6 @@ export default function generateData(
     const xSpace = stepArr(xMin, xMax, Array(width));
     const ySpace = stepArr(yMin, yMax, Array(height));
 
-    console.log(colorStart, colorEnd);
-
     //get value for each point
     for (let i = 0; i < xSpace.length; i++) {
         for (let j = 0; j < ySpace.length; j++) {
@@ -131,7 +129,6 @@ export function mandIterations(x, y, canvas) {
     const minY = -2;
     const size = 400;
     //x: -3 -> 1; y: -2 -> 2
-    //4 * a/400 - 3
     let a = changeToReal(Math.ceil(x - left), size, range, minX);
     let b = changeToReal(y - top, size, range, minY);
     const real = a;
@@ -152,5 +149,5 @@ export function mandIterations(x, y, canvas) {
         a = a ** 2 + b ** 2 + real;
         b = 2 * a * b + imaginary;
     }
-    return [real, imaginary];
+    return [real, -imaginary];
 }

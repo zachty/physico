@@ -72,15 +72,26 @@ export default function Chaos() {
                 <div>
                     <p>
                         Write a description of of how the left canvas relates to
-                        chaos theory
+                        chaos theory. This page makes use of the 'f(z) = z^2 +
+                        c' equation to display the Mandelbrot Set. Picture an
+                        x-axis through the middle going from -3 to 1
+                        representing real numbers. A y-axis going vertically
+                        through center from -2 to 2, represents the imaginary
+                        numbers. Combined, every point on this picture forms a
+                        complex number 'c = a + ib'. Starting with z = 0 and
+                        each iteration becoming the next z, we can see how the
+                        function jumps around. Some points are stable,
+                        particularly around -1. Others diverge to infinity
+                        quickly, near the edges of the map. See if you can find
+                        some stable points with interesting patterns!
+                        Bifurcation stuff. How even a small change in the
+                        initial state (like c) can drastically change the
+                        outcome of the equation.
                     </p>
                     <br />
                     <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing
-                        elit. Deserunt corporis ratione animi repudiandae
-                        nostrum aut voluptatem deleniti dignissimos itaque
-                        provident, fugiat neque excepturi impedit similique
-                        dolorum quaerat perspiciatis id nemo.
+                        Mouse over the box to the left after clicking play. You
+                        will see the first 100 iterations of
                     </p>
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -92,12 +103,16 @@ export default function Chaos() {
             </div>
             <div id="m-set-describe">
                 <p>
-                    Describe the below heatmap being all points that do not
-                    diverge to infinity. Describe how to use the form below to
-                    generate interesting images (possibly offer random
-                    selections of interesting spots).
+                    What happens if we plot all the points that do not diverge
+                    to infinity? Better yet, what if we plot the number of
+                    iterations each point takes to diverge and color contrast
+                    that with points that don't diverge? Click submit below to
+                    see the Mandelbrot set! Describe how to use the form below
+                    to generate interesting images (possibly offer random
+                    selections of interesting spots). Try: x-min=0.33,
+                    x-max=0.39, y-min=-0.6{' '}
                     <strong>
-                        The graphic can take up to 30 seconds to load, be
+                        The graphic can take up to 2 minutes to load, be
                         patient!
                     </strong>
                 </p>
